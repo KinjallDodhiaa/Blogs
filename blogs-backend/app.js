@@ -54,10 +54,9 @@ app.use('/users', usersRouter);
 //router path: '/posts'
 app.use("/posts", postsRouter);
 
-
 /** ERROR HANDLING */
 app.use((err, req, res, next) => {
-    //respond to the rquestor with the error message
+    //respond to the requestor with the error message
     res.status(500).send({
         error: {
             message: err.message
