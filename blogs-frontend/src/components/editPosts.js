@@ -23,8 +23,7 @@ const EditPosts = (props) => {
       console.log(foundPostToEdit);
       setName(foundPostToEdit.name);
       setTitle(foundPostToEdit.title);
-      console.log(foundPostToEdit.content);
-    }
+      setContent(foundPostToEdit.content)    }
   }, []);
 
 
