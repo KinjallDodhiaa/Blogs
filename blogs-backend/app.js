@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
 
 
 /**
@@ -41,7 +43,7 @@ app.use(logger('dev'));
 //SETTING UP MONGODB CONNECTION
 //mongodb+srv://Kinjal:test1234@cluster0.kgubn.mongodb.net/recordShop?retryWrites=true&w=majority
 mongoose.connect(
-  "mongodb+srv://Kinjal:test1234@cluster0.kgubn.mongodb.net/blogs?retryWrites=true&w=majority",
+  `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.kgubn.mongodb.net/blogs?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -89,4 +91,4 @@ app.use((err, req, res, next) => {
 
 module.exports = app;
 
-// app.listen(3005, () => console.log("Running on http://localhost:3005"));
+app.listen(3001, () => console.log("Running on http://localhost:3001"));

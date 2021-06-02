@@ -52,17 +52,6 @@ const App = () => {
           <Route path="/editPosts/:id">
             {posts && <EditPosts edit={posts} sendGetRequest={sendGetRequest} />}
           </Route>
-          {/* <Route path="/edit/:id"
-          render={(props) => {
-            const posts = post.find((post) => post.id === props.match.params.id );
-            if (posts) {
-              return <EditPosts post={post} updatePost={updateBlogs}/>
-            }else{
-              return <Redirect to='/'/>
-            }
-          }}>
-            <EditPosts state={post} sendGetRequest={sendGetRequest}/>
-          </Route> */}
         </Switch>
       </Router>
     );

@@ -9,9 +9,7 @@ const ShowPosts = (props) => {
     const deletePostsOnClick = async (id) => {
       try {
         axios
-          .delete("http://localhost:3001/posts/", {
-            data: { id: id },
-          })
+          .delete(`http://localhost:3001/posts/${id}`)
           .then((response) => props.sendGetRequest());
       } catch (error) {
         console.log(error);

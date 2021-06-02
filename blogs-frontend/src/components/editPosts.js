@@ -63,19 +63,18 @@ else{
       }
     }
 
-  const updateBlogs = async (id, title, content, name) => {
-    // console.log("edit porstlog" + content);
-    var data = { id, title, content, name };
+  const updateBlogs = async (title, content, name) => {
+    var data = { title, content, name };
      try {
-       axios
-         .put("http://localhost:3001/posts/:id", data)
-         .then((res) => {props.sendGetRequest(); window.location.replace('/showPosts')});
+       axios.put(`http://localhost:3001/posts/${id}`, data).then((res) => {
+         props.sendGetRequest();
+         window.location.replace("/showPosts");
+       });
      } catch (error) {
        console.log(error);
      }
     console.log(data);
   };
-  // console.log('content' + content);
 
   return (
     <section className="section-1 addPost">
@@ -139,7 +138,7 @@ else{
             
             <button
               onClick={() => {
-                updateBlogs(id, title, content, name);
+                updateBlogs(title, content, name);
               }}
               type="button"
               className="btn btn-primary mt-5"
