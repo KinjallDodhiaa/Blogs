@@ -9,7 +9,7 @@ const ShowPosts = (props) => {
     const deletePostsOnClick = async (id) => {
       try {
         axios
-          .delete("http://localhost:3005/posts/", {
+          .delete("http://localhost:3001/posts/", {
             data: { id: id },
           })
           .then((response) => props.sendGetRequest());
@@ -77,13 +77,13 @@ const ShowPosts = (props) => {
               {props.show.length < 1 ? <h2> No Blogs Yet</h2> :
                 props.show.map((post, index) => (
                 <>
-                <Link key={index} to={`/posts/${post.id}`} className="link">
+                <Link key={index} to={`/posts/${post._id}`} className="link">
                   <h2>{post.title}</h2>
                 </Link>
 
                   <p>posted by {post.name}</p>
                   <span className="text-center">
-                    <h3 onClick={()=>{deletePostsOnClick(post.id)}}>X</h3>
+                    <h3 onClick={()=>{deletePostsOnClick(post._id)}}>X</h3>
                   </span>
                   </>
               ))}

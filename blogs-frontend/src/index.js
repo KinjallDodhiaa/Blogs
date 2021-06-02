@@ -14,7 +14,8 @@ const axios = require("axios").default;
 
 
 const App = () => {
-    const [post, setPost] = useState([]);
+    const [posts, setPosts] = useState([]);
+    console.log(posts);
 
     useEffect(() => {
       sendGetRequest();
@@ -23,8 +24,8 @@ const App = () => {
     const sendGetRequest = async () => {
       try {
         await axios
-          .get("http://localhost:3005/posts/")
-          .then((response) => {setPost(response.data);console.log(response.data);});
+          .get("http://localhost:3001/posts")
+          .then((response) => {setPosts(response.data);console.log(response.data);});
       } catch (err) {
         console.error(err);
       }
@@ -42,13 +43,14 @@ const App = () => {
             <AddPosts sendGetRequest={sendGetRequest} />
           </Route>
           <Route path="/showPosts">
-            <ShowPosts show={post} sendGetRequest={sendGetRequest} />
+            <ShowPosts show={posts} sendGetRequest={sendGetRequest} />
           </Route>
           <Route path="/posts/:id">
-            <Posts showPostDetails={post} sendGetRequest={sendGetRequest} />
+
+            <Posts showPostDetails={posts} sendGetRequest={sendGetRequest} />
           </Route>
           <Route path="/editPosts/:id">
-            {post && <EditPosts edit={post} sendGetRequest={sendGetRequest} />}
+            {posts && <EditPosts edit={posts} sendGetRequest={sendGetRequest} />}
           </Route>
           {/* <Route path="/edit/:id"
           render={(props) => {

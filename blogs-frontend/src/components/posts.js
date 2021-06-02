@@ -6,9 +6,11 @@ import '../css/style.css'
 
 const Posts = (props) => {
   const { id } = useParams();
+  console.log(props);
+  console.log(id);
 
-  const foundPost = props.showPostDetails.find((post) => id == post.id);
-
+  const foundPost = props.showPostDetails.find((post) => id == post._id);
+  console.log(foundPost);
 
   return (
     <section className="post-section">
@@ -47,7 +49,7 @@ const Posts = (props) => {
                   className="card-text"
                 ></p>
 
-                <Link className="p-5" to={`/editPosts/${foundPost.id}`}>
+                <Link className="p-5" to={`/editPosts/${foundPost._id}`}>
                   <button className="btn btn-primary mt-5 postButton">
                     Edit
                   </button>

@@ -8,8 +8,9 @@ const {
   updatePosts,
 } = require("../controller/postsController");
 
-router.route("/").get(getPosts).post(addPosts).delete(deletePost);
-router.route('/update').post(updatePosts);
+router.route("/").get(getPosts).post(addPosts);
+router.route('/:id').delete(deletePost).put(updatePosts);
+// router.route('/update').post(updatePosts);
 
 
 

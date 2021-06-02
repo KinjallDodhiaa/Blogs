@@ -17,7 +17,7 @@ const EditPosts = (props) => {
 
 
   useEffect(() => {
-    const foundPostToEdit = props.edit.find((post) => post.id === id);
+    const foundPostToEdit = props.edit.find((post) => post._id === id);
 
     if (foundPostToEdit && id) {
       console.log(foundPostToEdit);
@@ -33,7 +33,7 @@ const EditPosts = (props) => {
 
   const nameValue = (name) => {
     if(!name){
-      const foundPostToEdit = props.edit.find((post) => post.id === id);
+      const foundPostToEdit = props.edit.find((post) => post._id === id);
       if(foundPostToEdit)
      {return foundPostToEdit.name}} 
 else{
@@ -43,7 +43,7 @@ else{
 
     const titleValue = (title) => {
       if (!title) {
-        const foundPostToEdit = props.edit.find((post) => post.id === id);
+        const foundPostToEdit = props.edit.find((post) => post._id === id);
         if (foundPostToEdit) {
           return foundPostToEdit.title;
         }
@@ -54,7 +54,7 @@ else{
 
     const quillValue = (quillContent) => {
       if (!quillContent) {
-        const foundPostToEdit = props.edit.find((post) => post.id === id);
+        const foundPostToEdit = props.edit.find((post) => post._id === id);
         if (foundPostToEdit) {
           return foundPostToEdit.content;
         }
@@ -68,7 +68,7 @@ else{
     var data = { id, title, content, name };
      try {
        axios
-         .post("http://localhost:3005/posts/update", data)
+         .put("http://localhost:3001/posts/:id", data)
          .then((res) => {props.sendGetRequest(); window.location.replace('/showPosts')});
      } catch (error) {
        console.log(error);
@@ -147,7 +147,7 @@ else{
               <h3>Save</h3>
             </button>
           </form>
-          )
+          
         </div>
         <div className="imagesAddPost">
           <img src="../images/bg-post.jpg" />

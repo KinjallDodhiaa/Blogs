@@ -21,7 +21,7 @@ const AddPosts = (props) => {
     // TODO
     try {
       axios
-        .post("http://localhost:3005/posts/", {
+        .post("http://localhost:3001/posts/", {
           title: postTitle,
           content: postContent,
           name: postName,
