@@ -46,7 +46,6 @@ const App = () => {
             <ShowPosts show={posts} sendGetRequest={sendGetRequest} />
           </Route>
           <Route path="/posts/:id">
-
             <Posts showPostDetails={posts} sendGetRequest={sendGetRequest} />
           </Route>
           <Route path="/editPosts/:id">

@@ -21,7 +21,6 @@ const ShowPosts = (props) => {
     return (
       <section className="section-2">
         <div className="main-container">
-
           <div className="navbar">
             <nav className="nav-list">
               <Link to="/" className="nav-link">
@@ -41,10 +40,12 @@ const ShowPosts = (props) => {
           <div className="row">
             <div className="col-lg-6 col-md-6 col-sm-12">
               <h1 className="mb-5 mt-5">Most Popular Blogs</h1>
-              <h2>
-                Blog & website design for non-designers (how to make your blog
-                look incredible without spending a fortune)
-              </h2>
+              <Link>
+                <h2>
+                  Blog & website design for non-designers (how to make your blog
+                  look incredible without spending a fortune)
+                </h2>
+              </Link>
               <p>posted by Nayan Dodhia</p>
               <span className="text-center">
                 <h3>X</h3>
@@ -72,19 +73,32 @@ const ShowPosts = (props) => {
             </div>
             <div className="col-lg-6 col-md-6 col-sm-12">
               <h1 className="mb-5 mt-5">Your Story</h1>
-              {props.show.length < 1 ? <h2> No Blogs Yet</h2> :
+              {props.show.length < 1 ? (
+                <h2> No Blogs Yet</h2>
+              ) : (
                 props.show.map((post, index) => (
-                <>
-                <Link key={index} to={`/posts/${post._id}`} className="link">
-                  <h2>{post.title}</h2>
-                </Link>
+                  <>
+                    <Link
+                      key={index}
+                      to={`/posts/${post._id}`}
+                      className="link"
+                    >
+                      <h2>{post.title}</h2>
+                    </Link>
 
-                  <p>posted by {post.name}</p>
-                  <span className="text-center">
-                    <h3 onClick={()=>{deletePostsOnClick(post._id)}}>X</h3>
-                  </span>
+                    <p>posted by {post.name}</p>
+                    <span className="text-center">
+                      <h3
+                        onClick={() => {
+                          deletePostsOnClick(post._id);
+                        }}
+                      >
+                        X
+                      </h3>
+                    </span>
                   </>
-              ))}
+                ))
+              )}
             </div>
           </div>
           <div className="imagesShowPost">
