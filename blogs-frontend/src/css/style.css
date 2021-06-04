@@ -166,6 +166,9 @@ html {
   font-size: 5rem;
   font-weight: 900;
   text-align: center;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid black;
+
 }
 
 .section-2 h2{
@@ -173,7 +176,6 @@ html {
   font-weight: 900rem;
   text-align: center;
   height: 15rem;
-  border-top: 1px solid black;
   padding-top: 2rem;
 
 }
@@ -191,6 +193,8 @@ html {
   padding-bottom: 2rem;
   text-align: center;
   height: 5rem;
+  border-bottom: 1px solid black;
+
 }
 
 

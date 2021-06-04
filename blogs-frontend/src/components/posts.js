@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import '../css/style.css'
+const axios = require("axios").default;
 
 
 
@@ -11,6 +12,19 @@ const Posts = (props) => {
 
   const foundPost = props.showPostDetails.find((post) => id == post._id);
   console.log(foundPost);
+
+  const deletePostsOnClick = async (id) =>{
+          try {
+            axios
+              .delete(`http://localhost:3001/posts/${id}`)
+              .then((response) => props.sendGetRequest());
+          } catch (error) {
+            console.log(error);
+          }
+
+          console.log(id);
+
+  }
 
   return (
     <section className="post-section">
@@ -52,6 +66,16 @@ const Posts = (props) => {
                 <Link className="p-5" to={`/editPosts/${foundPost._id}`}>
                   <button className="btn btn-primary mt-5 postButton">
                     Edit
+                  </button>
+                </Link>
+                <Link to='/showPosts'>
+                  <button
+                    onClick={() => {
+                      deletePostsOnClick(foundPost._id);
+                    }}
+                    className="btn btn-primary mt-5 postButton"
+                  >
+                    Delete
                   </button>
                 </Link>
               </div>
