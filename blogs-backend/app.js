@@ -41,7 +41,7 @@ app.use(logger("dev"));
 // db.defaults({posts:[]}).write();
 
 //SETTING UP MONGODB CONNECTION
-//mongodb+srv://Kinjal:test1234@cluster0.kgubn.mongodb.net/recordShop?retryWrites=true&w=majority
+//mongodb+srv://Kinjal:test1234@cluster0.kgubn.mongodb.net/blogs?retryWrites=true&w=majority
 mongoose.connect(
   `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.kgubn.mongodb.net/blogs?retryWrites=true&w=majority`,
   {
