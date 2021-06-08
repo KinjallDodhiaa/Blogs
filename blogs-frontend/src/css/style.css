@@ -220,6 +220,23 @@ html {
 
 /* add posts */
 
+/* errors */
+
+.errors h1{
+  padding-top: 20rem;
+  text-align: center;
+  font-size: 2.5rem;
+
+}
+
+.errors ul{
+    text-align: center;
+  font-size: 2rem;
+
+}
+/* end of errors */
+
+
 
 form label{
   font-weight: 900;

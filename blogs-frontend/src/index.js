@@ -16,58 +16,61 @@ const axios = require("axios").default;
 
 
 const App = () => {
-    const [posts, setPosts] = useState([]);
-    console.log(posts);
+  const [posts, setPosts] = useState([]);
+  console.log(posts);
 
-    useEffect(() => {
-      sendGetRequest();
-    }, []);
+  useEffect(() => {
+    sendGetRequest();
+  }, []);
 
-    const sendGetRequest = async () => {
-      try {
-        await axios
-          .get("http://localhost:3001/posts")
-          .then((response) => {setPosts(response.data);console.log(response.data);});
-      } catch (err) {
-        console.error(err);
-      }
-    };
+  const sendGetRequest = async () => {
+    try {
+      const response = await axios
+        .get("http://localhost:3001/posts");
+      setPosts(response.data);
+      console.log(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  }; 
 
 
 
-    return (
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/addPosts">
-            <AddPosts sendGetRequest={sendGetRequest} />
-          </Route>
-          <Route path="/showPosts">
-            <ShowPosts show={posts} sendGetRequest={sendGetRequest} />
-          </Route>
-          <Route path="/mostPopularBlog1">
-            <MostPopularBlog1 />
-          </Route>
-          <Route path="/mostPopularBlog2">
-            <MostPopularBlog2 />
-          </Route>
-          <Route path="/mostPopularBlog3">
-            <MostPopularBlog2 />
-          </Route>
 
-          <Route path="/posts/:id">
-            <Posts showPostDetails={posts} sendGetRequest={sendGetRequest} />
-          </Route>
-          <Route path="/editPosts/:id">
-            {posts && (
-              <EditPosts edit={posts} sendGetRequest={sendGetRequest} />
-            )}
-          </Route>
-        </Switch>
-      </Router>
-    );
+
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/addPosts">
+          <AddPosts sendGetRequest={sendGetRequest} />
+        </Route>
+        <Route path="/showPosts">
+          <ShowPosts show={posts} sendGetRequest={sendGetRequest} />
+        </Route>
+        <Route path="/mostPopularBlog1">
+          <MostPopularBlog1 />
+        </Route>
+        <Route path="/mostPopularBlog2">
+          <MostPopularBlog2 />
+        </Route>
+        <Route path="/mostPopularBlog3">
+          <MostPopularBlog2 />
+        </Route>
+
+        <Route path="/posts/:id">
+          <Posts showPostDetails={posts} sendGetRequest={sendGetRequest} />
+        </Route>
+        <Route path="/editPosts/:id">
+          {posts && (
+            <EditPosts edit={posts} sendGetRequest={sendGetRequest} />
+          )}
+        </Route>
+      </Switch>
+    </Router>
+  );
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));
