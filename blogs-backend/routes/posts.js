@@ -13,7 +13,6 @@ const {
 
 router.route("/").get(getPosts).post(validateInputs(postValidationRules),addPosts);
 router.route('/:id').delete(deletePost).put(validateInputs(postValidationRules),updatePosts);
-// router.route('/update').post(updatePosts);
 
 
 
