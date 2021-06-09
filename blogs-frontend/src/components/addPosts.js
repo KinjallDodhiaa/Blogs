@@ -69,7 +69,6 @@ const AddPosts = (props) => {
             </Link>
           </nav>
         </div>
-
         <>
           <div className="blog-form">
             {errors && (
