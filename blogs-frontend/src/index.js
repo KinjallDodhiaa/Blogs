@@ -69,6 +69,7 @@ const App = () => {
           )}
         </Route>
       </Switch>
+      {/* <p> Thank you for visiting, goodbye {localStorage.getItem("user")}</p> */}
     </Router>
   );
 };

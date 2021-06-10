@@ -74,7 +74,7 @@ const ShowPosts = (props) => {
             </div>
           </div>
           <div className="imagesShowPost">
-            <img src="../images/blogpost-1.jpg" />
+            <img src="../images/blogpost-1.jpg" alt="backGroundImage" />
           </div>
         </div>
       </section>

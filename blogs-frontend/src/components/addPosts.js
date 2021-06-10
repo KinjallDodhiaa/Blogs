@@ -54,7 +54,7 @@ const AddPosts = (props) => {
   };
 
   return (
-    <section className="section-1 addPost">
+    <section className="add-post-section addPost">
       <div className="main-container">
         <div className="navbar">
           <nav className="nav-list">
@@ -133,7 +133,7 @@ const AddPosts = (props) => {
           </div>
         </>
         <div className="imagesAddPost">
-          <img src="../images/bg-post.jpg" />
+          <img src="../images/bg-post.jpg" alt='backgroundImageToWritePost'/>
         </div>
       </div>
     </section>
