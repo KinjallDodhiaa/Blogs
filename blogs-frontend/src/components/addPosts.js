@@ -54,7 +54,7 @@ const AddPosts = (props) => {
   };
 
   return (
-    <section className="add-post-section addPost">
+    <section className="section-1 addPost">
       <div className="main-container">
         <div className="navbar">
           <nav className="nav-list">
@@ -89,7 +89,7 @@ const AddPosts = (props) => {
 
             <form>
               <div className="form-group">
-                <label for="inputTitle">Name</label>
+                <label htmlFor="inputTitle">Name</label>
                 <input
                   placeholder="please write your name over here..."
                   ref={inputNameRef}
@@ -100,7 +100,7 @@ const AddPosts = (props) => {
               </div>
 
               <div className="form-group">
-                <label for="inputTitle">Title</label>
+                <label htmlFor="inputTitle">Title</label>
                 <input
                   ref={inputTitleRef}
                   type="text"

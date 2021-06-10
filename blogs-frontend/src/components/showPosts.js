@@ -55,12 +55,11 @@ const ShowPosts = (props) => {
             <div className="col-lg-6 col-md-6 col-sm-12">
               <h1 className="mb-5 mt-5">Your Story</h1>
               {props.show.length < 1 ? (
-                <h2> No Blogs Yet</h2>
+                <h2 > No Blogs Yet</h2>
               ) : (
                 props.show.map((post, index) => (
                   <>
-                    <Link
-                      key={index}
+                    <Link key={index}
                       to={`/posts/${post._id}`}
                       className="link"
                     >
@@ -75,7 +74,7 @@ const ShowPosts = (props) => {
           </div>
           <div className="imagesShowPost">
             <img src="../images/blogpost-1.jpg" alt="backGroundImage" />
-          </div>
+          </div> 
         </div>
       </section>
     );

@@ -6,7 +6,7 @@ exports.postValidationRules = [
       "Title is required. Its length should be minimum 5 characters and maximum 200"
     ),
   body("content")
-    .isLength({ min: 20, max: 5000 })
+    .isLength({ min: 20})
     .withMessage(
       "Content is required. Its length should be minimum 20 characters and maximum 5000"
     ),
