@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "../css/style.css";
-const axios = require("axios").default;
 
 
 const ShowPosts = (props) => {
