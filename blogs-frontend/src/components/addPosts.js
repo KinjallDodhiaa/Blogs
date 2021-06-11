@@ -73,7 +73,7 @@ const AddPosts = (props) => {
           <div className="blog-form">
             {errors && (
               <div className="errors">
-                <h1>There are some errors below:</h1> <br />
+                <h1>Try again.There are some errors below:</h1> <br />
                 {/* <pre> {JSON.stringify(errors, null, 2)}</pre> */}
                 <ul>
                   {errors["errors"]
