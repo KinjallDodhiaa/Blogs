@@ -78,8 +78,6 @@ const EditPosts = (props) => {
                 type="text"
                 className="form-control border border-dark"
                 id="inputTitle"
-                border
-                border-dark
               />
             </div>
             <div className="form-group">
