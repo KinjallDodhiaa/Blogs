@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/style.css";
 import ReactQuill from "react-quill";
 import { Link, useParams } from "react-router-dom";
@@ -11,11 +11,6 @@ const EditPosts = (props) => {
   const [title, setTitle] = useState();
   const [content, setContent] = useState();
 
-  const inputTitleRef = useRef();
-  const inputContentRef = useRef();
-  const inputNameRef = useRef();
-
-
   useEffect(() => {
     const foundPostToEdit = props.edit.find((post) => post._id === id);
 
@@ -23,63 +18,30 @@ const EditPosts = (props) => {
       console.log(foundPostToEdit);
       setName(foundPostToEdit.name);
       setTitle(foundPostToEdit.title);
-      setContent(foundPostToEdit.content)    }
-  }, []);
-
+      setContent(foundPostToEdit.content);
+    }
+  }, [id, props.edit]);
 
   const handleBody = (data) => {
-       setContent(data);
+    setContent(data);
   };
-
-  const nameValue = (name) => {
-    if(!name){
-      const foundPostToEdit = props.edit.find((post) => post._id === id);
-      if(foundPostToEdit)
-     {return foundPostToEdit.name}} 
-else{
-      return name
-    }
-  }
-
-    const titleValue = (title) => {
-      if (!title) {
-        const foundPostToEdit = props.edit.find((post) => post._id === id);
-        if (foundPostToEdit) {
-          return foundPostToEdit.title;
-        }
-      } else {
-        return title;
-      }
-    };
-
-    const quillValue = (quillContent) => {
-      if (!quillContent) {
-        const foundPostToEdit = props.edit.find((post) => post._id === id);
-        if (foundPostToEdit) {
-          return foundPostToEdit.content;
-        }
-      } else {
-        return quillContent;
-      }
-    }
 
   const updateBlogs = async (title, content, name) => {
     var data = { title, content, name };
-     try {
-       axios.put(`http://localhost:3001/posts/${id}`, data).then((res) => {
-         props.sendGetRequest();
-         window.location.replace("/showPosts");
-       });
-     } catch (error) {
-       console.log(error);
-     }
+    try {
+      axios.put(`http://localhost:3001/posts/${id}`, data).then((res) => {
+        props.sendGetRequest();
+        window.location.replace("/showPosts");
+      });
+    } catch (error) {
+      console.log(error);
+    }
     console.log(data);
   };
 
   return (
     <section className="section-1 addPost">
       <div className="main-container">
-
         <div className="navbar">
           <nav className="nav-list">
             <Link to="/" className="nav-link">
@@ -99,10 +61,9 @@ else{
             <div className="form-group">
               <label for="inputTitle">Name</label>
               <input
-                value={nameValue(name)}
+                value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="please write your name over here..."
-                ref={inputNameRef}
                 type="text"
                 className="form-control border border-dark"
                 id="inputTitle"
@@ -112,9 +73,8 @@ else{
             <div className="form-group">
               <label for="inputTitle">Title</label>
               <input
-                value={titleValue(title)}
+                value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                ref={inputTitleRef}
                 type="text"
                 className="form-control border border-dark"
                 id="inputTitle"
@@ -125,17 +85,16 @@ else{
             <div className="form-group">
               <label htmlFor="inputContent">Content</label>
               <ReactQuill
-                value={quillValue(content)}
+                value={content}
                 className="border border-dark"
                 placeholder="write something amazing..."
                 modules={EditPosts.modules}
                 formats={EditPosts.formats}
                 onChange={handleBody}
-                // ref={inputContentRef}
                 id="inputContent"
               />
             </div>
-            
+
             <button
               onClick={() => {
                 updateBlogs(title, content, name);
@@ -146,85 +105,12 @@ else{
               <h3>Save</h3>
             </button>
           </form>
-          
         </div>
         <div className="imagesAddPost">
           <img src="../images/bg-post.jpg" />
         </div>
       </div>
     </section>
-    // <>
-    //   <section className="section-3">
-    //     <div className="main-container">
-    //       <div>
-    //         <Link className="logo-link">
-    //           <img src="images/logo.png" alt="Logo" className="logo" />
-    //         </Link>
-    //       </div>
-
-    //       <div className="navbar">
-    //         <nav className="nav-list">
-    //           <Link to="/" className="nav-link">
-    //             Home
-    //           </Link>
-    //           <Link to="/addPosts" className="nav-link">
-    //             Posts
-    //           </Link>
-    //         </nav>
-    //       </div>
-
-    //       <div className="imageshow">
-    //         <img src="../images/blogpost-1.jpg" />
-    //       </div>
-    //     </div>
-    //     <div className="container mt-5 form-container">
-    //       <div className="row">
-    //         <form className="m-5">
-    //           <div className="form-group">
-    //             <label for="inputTitle">Name</label>
-    //             <input
-    //               placeholder="please write your name over here..."
-    //               ref={inputNameRef}
-    //               type="text"
-    //               className="form-control"
-    //               id="inputTitle"
-    //             />
-    //           </div>
-
-    //           <div className="form-group">
-    //             <label for="inputTitle">Title</label>
-    //             <input
-    //               ref={inputTitleRef}
-    //               type="text"
-    //               className="form-control"
-    //               id="inputTitle"
-    //             />
-    //           </div>
-    //           <div className="form-group">
-    //             <label htmlFor="inputContent">Content</label>
-    //             <ReactQuill
-    //               placeholder="write something amazing..."
-    //               modules={AddPosts.modules}
-    //               formats={AddPosts.formats}
-    //               onChange={handleBody}
-    //               ref={inputContentRef}
-    //               id="inputContent"
-    //             />
-    //           </div>
-    //           <Link to="/">
-    //             <button
-    //               onClick={() => addPostsOnClick()}
-    //               type="button"
-    //               className="btn btn-primary mt-5"
-    //             >
-    //               <h3>Save</h3>
-    //             </button>
-    //           </Link>
-    //         </form>
-    //       </div>
-    //     </div>
-    //   </section>
-    // </>
   );
 };
 
