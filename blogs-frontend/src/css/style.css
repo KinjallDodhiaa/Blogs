@@ -19,7 +19,6 @@ html {
   justify-content: center;
 }
 
-
 /* end of common styles */
 
 /* section-1 */
@@ -35,10 +34,10 @@ html {
 }
 /* navbar */
 
-.logo-link{
-    position: absolute;
-    top:3rem;
-    left:5rem;
+.logo-link {
+  position: absolute;
+  top: 3rem;
+  left: 5rem;
 }
 
 .navbar {
@@ -82,7 +81,7 @@ html {
   width: 150%;
   height: 5rem;
   background-color: #d50000;
-  left: -20%;
+  left: -30%;
   transform: rotate(-40deg) translateX(-4rem);
   transform-origin: left bottom;
   opacity: 0.8;
@@ -93,10 +92,13 @@ html {
   left: 110%;
 }
 
+.modalClass{
+  z-index: 1;
+}
 /* end of navbar */
 
 .section-1-banner {
-  z-index:1;
+  z-index: 1;
   flex-direction: column;
 }
 
@@ -105,23 +107,53 @@ html {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.5rem;
-    margin: 6rem 0 4rem 0;
+  margin: 6rem 0 4rem 0;
+}
+
+#dropdown-basic-button{
+    font-size: 2rem;
+      width: 15rem;
+      text-align: left;
+
 
 }
 
-.section-1-banner .link{
-  padding: 2rem 4rem;
-  font-size: 3rem;
-  background-color: var(--black-color);
-  color: var(--white-color);
-  font-weight: 400;
-  letter-spacing: 0.1rem;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
+#dropdown-basic-button::after{
+  display: none;
+}
+
+.dropdownButton{
+  text-align: left;
+  font-size: 2rem;
+  width: 15rem;
 }
 
 
+.modalTitle{
+  font-size: 2.6rem;
+  font-weight: 900;
+}
+
+.labelClass{
+  display: block;
+  font-size: 1.6rem;
+}
+
+.inputClass{
+  display: block;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 2.6rem;
+}
+
+.modalButton{
+  font-size: 1.6rem;
+  padding: 0.6rem;
+}
+
+.modalP{
+  font-size: 1.6rem;
+}
 /* background image */
 
 .imageshow {
@@ -144,50 +176,48 @@ html {
 /*end of background image */
 
 /* create blog */
-.createBlog{
-    top: 70%;
-    left:50%;
+.createBlog {
+  top: 70%;
+  left: 50%;
 }
 /* end of create blog */
 /* end of section-1 */
 
 /* section 2 */
 
-.section-2{
+.section-2 {
   width: 100%;
   height: 100%;
   z-index: 1;
 }
 
-.main-container{
+.main-container {
   margin-bottom: 12rem;
 }
 
-.section-2 h1{
+.section-2 h1 {
   font-size: 5rem;
   font-weight: 900;
   text-align: center;
   padding-bottom: 2rem;
   border-bottom: 1px solid black;
-
 }
 
-.section-2 h2{
+.section-2 h2 {
   font-size: 3rem;
   font-weight: 900rem;
   text-align: center;
   height: 15rem;
   padding-top: 2rem;
-
 }
 
-.section-2 h2:hover{
+.section-2 h2:hover {
   color: #0085a1;
   cursor: pointer;
 }
-  /* color: #0085a1; */
+/* color: #0085a1; */
 
-.section-2 p{
+.section-2 p {
   font-style: italic;
   font-size: 1.5rem;
   margin-bottom: 2rem;
@@ -195,25 +225,22 @@ html {
   text-align: center;
   height: 5rem;
   border-bottom: 1px solid black;
-
 }
 
-
-.imagesShowPost{
+.imagesShowPost {
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
 }
 
-.imagesShowPost img{
+.imagesShowPost img {
   width: 100%;
   height: 100%;
-  opacity: 0.3;
+  opacity: 0.23;
 }
- 
 
-.link{
+.link {
   color: black;
   text-decoration: none;
 }
@@ -222,61 +249,53 @@ html {
 
 /* add posts */
 
-
-.imagesAddPost{
+.imagesAddPost {
   position: absolute;
   top: 0;
   left: 0;
   z-index: -5;
 }
 
-.imagesAddPost img{
+.imagesAddPost img {
   width: 100%;
-  opacity: 0.7;
+  opacity: 0.4;
 }
-
 
 /* errors */
 
-.errors h1{
+.errors h1 {
   padding-top: 20rem;
   text-align: center;
   font-size: 2rem;
-
 }
 
-.errors ul{
-    text-align: center;
+.errors ul {
+  text-align: center;
   font-size: 1.5rem;
-
 }
 /* end of errors */
 
-
-
-form label{
+form label {
   font-weight: 900;
-    font-size: 2rem;
-    margin-top: 0.5rem;
+  font-size: 2rem;
+  margin-top: 0.5rem;
 }
 
 form input {
-  height:4rem;
+  height: 4rem;
   border: 1px solid black;
 }
 
-.button{
-    font-size: 2rem;
+.button {
+  font-size: 2rem;
 }
 
-
-.blog-form{
+.blog-form {
   margin-top: 20rem;
 }
 
-
 /* quil editor */
-.ql-editor{
+.ql-editor {
   min-height: 30rem;
 }
 /* end of quil editor */
@@ -287,61 +306,56 @@ form input {
 /* end of blogs details */
 
 /* posts */
-.blogs-container{
+.blogs-container {
   margin-top: 5rem;
   background-color: #6edae6;
 }
 
-.card-title{
+.card-title {
   font-size: 3rem;
   font-weight: 900;
   padding: 3rem;
 }
 
-.card-text{
+.card-text {
   font-size: 1.8rem;
   text-align: left;
   text-indent: 3rem;
 }
 
-.postButton{
+.postButton {
   padding-left: 2rem;
   padding-right: 2rem;
   font-size: 2rem;
-  background-color:#d50000;
+  background-color: #d50000;
   border: none;
 }
 /* end of posts */
 
 /* Responsive */
 
-@media (min-width:768px){
-  .nav-link{
+@media (min-width: 768px) {
+  .nav-link {
     margin: 0 1rem;
   }
 
-  .section-1-banner p{
+  .section-1-banner p {
     text-align: center;
   }
 
-  .blog-form{
+  .blog-form {
     margin-top: 20rem;
   }
-
 }
 
 @media (min-width: 540px) {
-
-  .navbar{
-    right: 3rem;
-  }
-  .nav-link{
+  .nav-link {
     margin: 0 0.5rem;
     width: 12rem;
     height: 3rem;
   }
 
-  .logo-link{
+  .logo-link {
     left: 2rem;
   }
 
@@ -349,176 +363,137 @@ form input {
     height: 5rem;
   }
 
-  .section-1-banner p{
+  .section-1-banner p {
     font-size: 3rem;
     text-align: center;
   }
 }
 
-
-
 @media (max-width: 600px) {
-
-    .navbar{
+  .navbar {
     right: 0.5rem;
   }
 
-  .nav-link{
+  .nav-link {
     font-size: 1.2rem;
     width: 10rem;
     margin: 0.2rem;
-    
   }
 
-    .logo-link{
-      top: 4rem;
+  .logo-link {
+    top: 4rem;
     left: 0.5rem;
   }
 
-    .logo {
+  .logo {
     height: 3.5rem;
   }
 
-    .section-1-banner p{
+  .section-1-banner p {
     font-size: 2.5rem;
     text-align: center;
   }
 
-    .nav-link::before{
-    content:  '';
+  .nav-link::before {
+    content: "";
     width: 150%;
   }
-
-
 }
 
-@media (min-width:280px) and (max-width:653px){
-  .logo-link{
-    top: 4rem;
-    left: 0.3rem;
-  }
-
-    .logo {
-    height: 3rem;
-  }
-
-    .nav-link{
+@media (min-width: 280px) and (max-width: 653px) {
+  .nav-link {
     font-size: 1.2rem;
     width: 7.5rem;
     margin: 0.1rem;
-    
   }
 
-  .nav-link::before{
+  .nav-link::before {
     width: 120%;
     height: 3rem;
   }
 
-    .section-1-banner p{
+  .section-1-banner p {
     font-size: 2rem;
     text-align: center;
   }
-
-
 }
 
-@media (min-width:320px) and (max-width:568px){
-      .logo-link{
-      top: 4rem;
+@media (min-width: 320px) and (max-width: 568px) {
+  .logo-link {
+    top: 4rem;
     left: 0.5rem;
   }
 
-    .logo {
+  .logo {
     height: 3rem;
   }
 
-    .nav-link{
+  .nav-link {
     font-size: 1.2rem;
     width: 9rem;
     margin: 0.1rem;
-    
   }
 
-    .section-1-banner p{
+  .section-1-banner p {
     font-size: 2rem;
     text-align: center;
   }
-
-
 }
 
-@media (min-width:768px){
-
-    .section-2 h1{
+@media (min-width: 768px) {
+  .section-2 h1 {
     font-size: 4rem;
   }
 
-
-.section-2 h2{
-  font-size: 2rem;
+  .section-2 h2 {
+    font-size: 2rem;
+  }
 }
 
-
-
-}
-
-@media (max-width:600px){
-  .section-2 h1{
+@media (max-width: 600px) {
+  .section-2 h1 {
     font-size: 3rem;
   }
 
-  .section-2 h2{
+  .section-2 h2 {
     font-size: 2rem;
   }
 
-  .imagesShowPost img{
+  .imagesShowPost img {
     height: 500vw;
   }
 }
 
-
-
-
-@media (min-width:1024px) and (max-width:1366px){
-
-
-  .imagesAddPost img{
-    height: 100vh
+@media (min-width: 1024px) and (max-width: 1366px) {
+  .imagesAddPost img {
+    height: 100vh;
   }
+}
 
-} 
-
-@media (min-width:726px) and (max-width:1024px){
-
-
-  .imagesAddPost img{
-    height: 100vh
+@media (min-width: 726px) and (max-width: 1024px) {
+  .imagesAddPost img {
+    height: 100vh;
   }
+}
 
-} 
-
-
-@media (max-width: 640px){
-
-    .imagesAddPost img{
+@media (max-width: 640px) {
+  .imagesAddPost img {
     height: 250vw;
   }
 
-  .blog-form{
+  .blog-form {
     margin-top: 35rem;
   }
-
 }
 
-@media (min-width:280px) and (max-width:653px){
-  .blog-form{
+@media (min-width: 280px) and (max-width: 653px) {
+  .blog-form {
     margin-top: 40rem;
   }
 
-    .imagesAddPost img{
+  .imagesAddPost img {
     height: 400vw;
   }
-
 }
 
 /* @media(min-width:360px) and (max-width:640px){
@@ -527,20 +502,13 @@ form input {
   }
 } */
 
-@media (min-width:320px) and (max-width:568px){
-
-  .blog-form{
+@media (min-width: 320px) and (max-width: 568px) {
+  .blog-form {
     margin-top: 45rem;
   }
-      .imagesAddPost img{
-    height:300vw;
+  .imagesAddPost img {
+    height: 300vw;
   }
-
-
 }
-
-
-
-
 
 /* end of responsive */

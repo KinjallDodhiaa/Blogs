@@ -42,9 +42,10 @@ app.use(logger("dev"));
 
 //SETTING UP MONGODB CONNECTION
 //mongodb+srv://Kinjal:test1234@cluster0.kgubn.mongodb.net/blogs?retryWrites=true&w=majority
+const mongooseConnectionString =  `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.kgubn.mongodb.net/blogs?retryWrites=true&w=majority`
+console.log(mongooseConnectionString);
 mongoose.connect(
-  `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.kgubn.mongodb.net/blogs?retryWrites=true&w=majority`,
-  {
+mongooseConnectionString,  {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }
@@ -77,6 +78,7 @@ app.use("/posts", postsRouter);
 
 /** ERROR HANDLING */
 app.use((err, req, res, next) => {
+  console.log(err)
   //respond to the requestor with the error message
   res.status(500).send({
     error: {

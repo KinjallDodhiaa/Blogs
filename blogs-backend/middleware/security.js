@@ -8,6 +8,7 @@ exports.setCors = (req, res, next) => {
         "Access-Control-Allow-Headers",
         "Origin, x-Requested-With, Content-Type, Accept"
     );
+    res.header("Access-Control-Expose-Headers", "auth");
     // client can send only these methods: POST, GET, PUT, DELETE, OPTIONS
     res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
     // next will delegate the request to my router

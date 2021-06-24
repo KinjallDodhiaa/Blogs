@@ -34,10 +34,6 @@ const App = () => {
     }
   }; 
 
-
-
-
-
   return (
     <Router>
       <Switch>
@@ -64,9 +60,7 @@ const App = () => {
           <Posts showPostDetails={posts} sendGetRequest={sendGetRequest} />
         </Route>
         <Route path="/editPosts/:id">
-          {posts && (
-            <EditPosts edit={posts} sendGetRequest={sendGetRequest} />
-          )}
+          {posts && <EditPosts edit={posts} sendGetRequest={sendGetRequest} />}
         </Route>
       </Switch>
       {/* <p> Thank you for visiting, goodbye {localStorage.getItem("user")}</p> */}
