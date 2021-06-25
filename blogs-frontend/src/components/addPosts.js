@@ -47,6 +47,7 @@ const AddPosts = (props) => {
   const addPostsOnClick = async () => {
     // console.log(inputContentRef.current);
     try {
+      
       await addPost(
         inputTitleRef.current.value,
         inputContentRef.current.value,
@@ -55,11 +56,12 @@ const AddPosts = (props) => {
       setTitle("");
       history.push('/showPosts')
     } catch (error) {
-
       console.log("U need to sign in" + error);
-      setErrors(error);
-      alert("Please sign in to write post")
-      window.location.replace('/')
+      if(!localStorage.getItem("token")){
+      alert("Please sign in to write post");
+      window.location.replace('/');
+      }
+      setErrors(error.response.data);
     }
     //  setContent("");
   };
@@ -82,7 +84,7 @@ const AddPosts = (props) => {
         </div>
         <>
           <div className="blog-form">
-            {/* {errors && (
+            {errors && (
               <div className="errors">
                 <h1>Try again.There are some errors below:</h1> <br />
                 <ul>
@@ -95,7 +97,7 @@ const AddPosts = (props) => {
                     ))}
                 </ul>
               </div> 
-           )}  */}
+           )}  
 
             <form>
               <div className="form-group">
