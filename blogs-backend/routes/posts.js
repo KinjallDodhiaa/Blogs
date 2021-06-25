@@ -1,4 +1,6 @@
 const express = require("express");
+//Import the authenticator from the middlewares
+const auth = require("../middleware/authenticator");
 const { validateInputs } = require("../middleware/validator");
 const { postValidationRules } = require("../lib/validation/postRules");
 
@@ -11,8 +13,8 @@ const {
   updatePosts,
 } = require("../controller/postsController");
 
-router.route("/").get(getPosts).post(validateInputs(postValidationRules),addPosts);
-router.route('/:id').delete(deletePost).put(validateInputs(postValidationRules),updatePosts);
+router.route("/").get(getPosts).post(validateInputs(postValidationRules),auth, addPosts);
+router.route('/:id').delete(auth, deletePost).put(validateInputs(postValidationRules),auth, updatePosts);
 
 
 

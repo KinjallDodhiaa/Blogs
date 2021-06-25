@@ -29,10 +29,16 @@ const EditPosts = (props) => {
   const updateBlogs = async (title, content, name) => {
     var data = { title, content, name };
     try {
-      axios.put(`http://localhost:3001/posts/${id}`, data).then((res) => {
-        props.sendGetRequest();
-        window.location.replace("/showPosts");
-      });
+      axios
+        .put(`http://localhost:3001/posts/${id}`, data, {
+          headers: {
+            auth: localStorage.getItem("token"),
+          },
+        })
+        .then((res) => {
+          props.sendGetRequest();
+          window.location.replace("/showPosts");
+        });
     } catch (error) {
       console.log(error);
     }

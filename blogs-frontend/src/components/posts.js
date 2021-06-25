@@ -17,7 +17,11 @@ const Posts = (props) => {
   const deletePostsOnClick = async (id) =>{
           try {
             axios
-              .delete(`http://localhost:3001/posts/${id}`)
+              .delete(`http://localhost:3001/posts/${id}`, {
+                headers: {
+                  auth: localStorage.getItem("token"),
+                },
+              })
               .then((response) => props.sendGetRequest());
           } catch (error) {
             console.log(error);

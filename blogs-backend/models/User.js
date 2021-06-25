@@ -77,6 +77,29 @@ UserSchema.methods.checkPassword = function (password) {
   return bcrypt.compare(password, user.password);
 };
 
+//Find a user by the token
+UserSchema.statics.findByToken = function (token) {
+    const User = this;
+    //decoded payload out of the token
+    let decoded;
+
+    //verify the token and decode the payload
+    try {
+      decoded = jwt.verify(token, "FbW43-2-110%");
+      console.log(decoded)
+    } catch (error) {
+      console.log(error);
+      return;
+    }
+
+    //find the user with decoded id(decoded._id)
+    return User.findOne({
+      _id: decoded._id
+    })
+
+}
+
+
 //hook to be executed between middlewares
 UserSchema.pre("save", async function(next){
   // check if the password has changed (added)

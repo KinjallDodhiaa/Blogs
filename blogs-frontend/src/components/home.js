@@ -9,6 +9,7 @@ const Home = () => {
 
     const [userSignup,setUserSignup] = useState({});
     const [userSignin, setUserSignin] = useState({});
+    const [passwordShown, setPasswordShown] = useState(false);
 
     const myStorage = window.localStorage;
     
@@ -59,9 +60,10 @@ const Home = () => {
         const submitSignin = async () => {
           try {
          const response =   await axios
-              .post("http://localhost:3001/users/login", {"email":userSignin.email,"password":userSignin.password})
-                console.log(response);
-               window.location.replace("/");
+              .post("http://localhost:3001/users/login", {"email":userSignin.email,"password":userSignin.password},)
+              myStorage.setItem("token", response.headers.auth);
+          
+              window.location.replace("/");
             console.log(userSignin);
           } catch (error) {
             console.log(error.response);
@@ -69,6 +71,15 @@ const Home = () => {
           }
         };
 
+    // const togglePassword = () => {
+    //   // When the handler is invoked
+    //   // inverse the boolean state of passwordShown
+    //   setPasswordShown(!passwordShown);
+    // };
+
+    const signOutOnClick = () => {
+      localStorage.removeItem("token")
+    }
 
 
 
@@ -87,6 +98,7 @@ const Home = () => {
                 <Link to="/addPosts" className="nav-link">
                   Write Blog
                 </Link>
+                <button onClick={signOutOnClick} className="nav-link">Sign Out</button>
               </nav>
             </div>
           </div>
@@ -145,22 +157,26 @@ const Home = () => {
                   Password:
                 </label>
                 <input
+                  type={passwordShown ? "text" : "password"}
                   className="inputClass"
                   id="password"
                   name="password"
                   placeholder="enter your password"
                   onChange={handleChangeSignup}
                 />
+                {/* <i class="fas fa-eye-slash"></i> */}
                 <label htmlFor="password" className="labelClass">
                   Confirm Password:
                 </label>
                 <input
+                  type={passwordShown ? "text" : "password"}
                   name="confirmPassword"
                   id="password"
                   className="inputClass"
                   placeholder="confirm password"
                   onChange={handleChangeSignup}
                 />
+                {/* <button onClick={togglePassword}>Show Password</button> */}
                 <Button className="mt-5 modalButton" onClick={submitSignup}>
                   Sign up
                 </Button>
@@ -203,6 +219,7 @@ const Home = () => {
                   Password:
                 </label>
                 <input
+                  type={passwordShown ? "text" : "password"}
                   className="inputClass"
                   id="password"
                   name="password"

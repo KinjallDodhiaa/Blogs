@@ -23,11 +23,19 @@ const AddPosts = (props) => {
     console.log("add post log" + postContent);
     // TODO
     try {
-      const response = await axios.post("http://localhost:3001/posts/", {
-        title: postTitle,
-        content: postContent,
-        name: postName,
-      });
+      const response = await axios.post(
+        "http://localhost:3001/posts/",
+        {
+          title: postTitle,
+          content: postContent,
+          name: postName,
+        },
+         {
+           headers: {
+             auth: localStorage.getItem("token")
+           },
+         }
+      );
      await props.sendGetRequest({ title });
       console.log("response is :" + JSON.stringify(response));
     } catch (error) {
@@ -47,8 +55,11 @@ const AddPosts = (props) => {
       setTitle("");
       history.push('/showPosts')
     } catch (error) {
-      console.log(error.response.data);
-      setErrors(error.response.data);
+
+      console.log("U need to sign in" + error);
+      setErrors(error);
+      alert("Please sign in to write post")
+      window.location.replace('/')
     }
     //  setContent("");
   };
@@ -71,10 +82,9 @@ const AddPosts = (props) => {
         </div>
         <>
           <div className="blog-form">
-            {errors && (
+            {/* {errors && (
               <div className="errors">
                 <h1>Try again.There are some errors below:</h1> <br />
-                {/* <pre> {JSON.stringify(errors, null, 2)}</pre> */}
                 <ul>
                   {errors["errors"]
                     .map((error) => Object.entries(error))
@@ -84,8 +94,8 @@ const AddPosts = (props) => {
                       </li>
                     ))}
                 </ul>
-              </div>
-            )}
+              </div> 
+           )}  */}
 
             <form>
               <div className="form-group">
