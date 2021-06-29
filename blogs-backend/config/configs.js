@@ -1,4 +1,7 @@
 const { env } = process;
+const dotenv = require("dotenv");
+dotenv.config();
+
 
 //stores the environment passed by the command line (fe.NODE_ENV=development (local) or NODE_ENV=productive (server))
 const config = {
@@ -6,9 +9,9 @@ const config = {
 };
 
 //configuration parameters for the local environment
+const connectionString = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.kgubn.mongodb.net/PROD_blogs?retryWrites=true&w=majority`;
 const devConfig = {
-  db:
-    "mongodb+srv://Kinjal:test1234@cluster0.kgubn.mongodb.net/blogs?retryWrites=true&w=majority",
+  db: connectionString,
   jwt_key: "FbW43-2-110%",
 };
 
@@ -16,8 +19,8 @@ const devConfig = {
 const prodConfig = {
   //Using PROD_recordShop as a productive database on the same mongodb cluster
   db:
-    "mongodb+srv://Kinjal:test1234@cluster0.kgubn.mongodb.net/PROD_blogs?retryWrites=true&w=majority",
   //using a difeerent jwt key for the productive environment
+  connectionString,
   jwt_key: "PROD_FbW43-2-110%",
 };
 
