@@ -62,6 +62,7 @@ const Home = () => {
          const response =   await axios
               .post("http://localhost:3001/users/login", {"email":userSignin.email,"password":userSignin.password},)
               myStorage.setItem("token", response.headers.auth);
+              console.log(response)
           
               window.location.replace("/");
             console.log(userSignin);

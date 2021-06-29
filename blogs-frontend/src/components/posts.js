@@ -31,6 +31,7 @@ const Posts = (props) => {
 
   }
 
+
   return (
     <section className="post-section">
       {foundPost ? (
@@ -40,24 +41,25 @@ const Posts = (props) => {
               <div className="card-header">
                 <ul className="nav nav-tabs card-header-tabs">
                   <li className="nav-item">
-                    <Link className="nav-link" to="/">
+                    <Link className="nav-link-post" to="/">
                       Home
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/showPosts">
+                    <Link className="nav-link-post" to="/showPosts">
                       Blogs
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link
-                      className="nav-link"
+                      className="nav-link-post"
                       to="/addPosts"
                       tabindex="-1"
                       aria-disabled="true"
                     >
                       Write Blog
                     </Link>
+
                   </li>
                 </ul>
               </div>

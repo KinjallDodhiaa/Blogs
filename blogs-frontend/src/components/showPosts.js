@@ -5,6 +5,11 @@ import "../css/style.css";
 
 const ShowPosts = (props) => {
 
+  const signOutOnClick = () => {
+    localStorage.removeItem("token")
+  }
+
+
     return (
       <section className="section-2">
         <div className="main-container">
@@ -19,6 +24,8 @@ const ShowPosts = (props) => {
               <Link to="/addPosts" className="nav-link">
                 Write Blog
               </Link>
+              <button onClick={signOutOnClick} className="nav-link">Sign Out</button>
+
             </nav>
           </div>
         </div>
@@ -28,11 +35,12 @@ const ShowPosts = (props) => {
             <div className="col-lg-12 col-md-12 col-sm-12">
               <h1 className="mb-5 mt-5">Your Story</h1>
               {props.show.length < 1 ? (
-                <h2 > No Blogs Yet</h2>
+                <h2> No Blogs Yet</h2>
               ) : (
                 props.show.map((post, index) => (
                   <>
-                    <Link key={index}
+                    <Link
+                      key={index}
                       to={`/posts/${post._id}`}
                       className="link"
                     >
@@ -47,7 +55,7 @@ const ShowPosts = (props) => {
           </div>
           <div className="imagesShowPost">
             <img src="../images/blogpost-1.jpg" alt="backGroundImage" />
-          </div> 
+          </div>
         </div>
       </section>
     );

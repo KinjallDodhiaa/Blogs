@@ -2,6 +2,9 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+//import config file
+const config = require("../config/configs");
+
 
 
 const UserSchema = new Schema(
@@ -43,7 +46,7 @@ UserSchema.methods.generateAuthToken = function () {
    * toHexString: convert the user id in a hex string
    */
   const token = jwt
-    .sign({ _id: user._id.toHexString() }, "FbW43-2-110%")
+    .sign({ _id: user._id.toHexString() }, config.jwt_key)
     .toString();
 
   return token;
@@ -85,7 +88,7 @@ UserSchema.statics.findByToken = function (token) {
 
     //verify the token and decode the payload
     try {
-      decoded = jwt.verify(token, "FbW43-2-110%");
+      decoded = jwt.verify(token, config.jwt_key);
       console.log(decoded)
     } catch (error) {
       console.log(error);

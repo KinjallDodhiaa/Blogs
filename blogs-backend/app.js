@@ -4,8 +4,11 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoose = require("mongoose");
+//import config file
+const config = require("./config/configs");
 const dotenv = require("dotenv");
 dotenv.config();
+
 
 console.log(process.env);
 
@@ -42,14 +45,12 @@ app.use(logger("dev"));
 
 //SETTING UP MONGODB CONNECTION
 //mongodb+srv://Kinjal:test1234@cluster0.kgubn.mongodb.net/blogs?retryWrites=true&w=majority
-const mongooseConnectionString =  `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.kgubn.mongodb.net/blogs?retryWrites=true&w=majority`
-console.log(mongooseConnectionString);
-mongoose.connect(
-mongooseConnectionString,  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+//config.db contains the connection string to our database
+mongoose.connect(config.db, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true
+});
 
 //actually establishing the connection
 const db = mongoose.connection;
